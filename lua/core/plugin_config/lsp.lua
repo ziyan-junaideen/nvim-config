@@ -1,12 +1,10 @@
--- Plugins to look in to
--- 1. Fidget
--- 2. Neodev
-
 require("mason").setup()
 
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "ruby_ls" }
+  ensure_installed = { "lua_ls", "ruby_ls", 'solargraph' }
 })
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(_, _)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
@@ -21,10 +19,12 @@ end
 local lspconfig = require("lspconfig")
   
 lspconfig.lua_ls.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
 
-lspconfig.ruby_ls.setup {
+require("lspconfig").solargraph.setup {
+  capabilities = capabilities,
   on_attach = function(client, buffer)
     local callback = function()
       local params = vim.lsp.util.make_text_document_params(buffer)
@@ -54,21 +54,4 @@ lspconfig.ruby_ls.setup {
     -- The default on attach
     on_attach()
   end,
-  -- cmd = { "bundle", "exec", "ruby-lsp" },
-  init_options = {
-    enabledFeatures = {
-      'codeActions',
-      'diagnostics',
-      'documentHighlights',
-      'documentSymbols',
-      'formatting',
-      'inlayHint',
-      'hover',
-      'foldingRanges',
-    }
-  }
 }
-
--- Turn on lsp status information
--- require('fidget').setup()
-
