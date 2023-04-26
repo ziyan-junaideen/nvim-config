@@ -1,12 +1,31 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+vim.opt.backspace = '2'
+vim.opt.showcmd = true
+vim.opt.laststatus = 2
+vim.opt.autowrite = true
+vim.opt.cursorline = true
+vim.opt.autoread = true
+
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.shiftround = true
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.wrap = false
+
 -- NvimTree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
