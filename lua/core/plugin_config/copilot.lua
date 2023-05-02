@@ -1,8 +1,9 @@
 -- Removing mappings
+--[[
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
 vim.g.copilot_tab_fallback = ""
-
+--]]
 
 --[[
 -- Resources: 
@@ -10,3 +11,9 @@ vim.g.copilot_tab_fallback = ""
 -- https://github.com/orgs/community/discussions/11611 (copilot next previous mapping change)
 --
 --]]
+
+require("copilot").setup({
+  suggestion = { enabled = false },
+  panel = { enabled = false },
+})
+
