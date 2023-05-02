@@ -95,6 +95,39 @@ require('packer').startup(function(use)
     requires = {"kkharji/sqlite.lua"}
   }
 
+  use({
+    "glepnir/lspsaga.nvim",
+    opt = true,
+    branch = "main",
+    event = "LspAttach",
+    config = function()
+        require("lspsaga").setup({})
+    end,
+    requires = {
+        {"nvim-tree/nvim-web-devicons"},
+        --Please make sure you install markdown and markdown_inline parser
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+  })
+
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+  })
+
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      {"nvim-lua/plenary.nvim"},
+      {"nvim-treesitter/nvim-treesitter"}
+    }
+  }
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then

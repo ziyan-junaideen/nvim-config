@@ -1,10 +1,12 @@
 require("mason").setup()
 
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "ruby_ls", 'solargraph' }
+  ensure_installed = { "lua_ls", "ruby_ls", 'solargraph', 'tsserver', 'erlangls' },
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- require('core.plugin_config.lsp_keybindings')
 
 local on_attach = function(_, _)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
@@ -16,6 +18,17 @@ local on_attach = function(_, _)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 end
 
+-- require('lspsaga').setup({
+--   code_action_icon = "💡",
+--   symbol_in_winbar = {
+--     in_custom = false,
+--     enable = true,
+--     separator = ' ',
+--     show_file = true,
+--     file_formatter = ""
+--   },
+-- })
+
 local lspconfig = require("lspconfig")
   
 lspconfig.lua_ls.setup {
@@ -23,9 +36,20 @@ lspconfig.lua_ls.setup {
   capabilities = capabilities,
 }
 
-require("lspconfig").solargraph.setup {
+lspconfig.tsserver.setup{}
+lspconfig.erlangls.setup{}
+
+-- lspconfig.solargraph.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
+
+lspconfig.ruby_ls.setup { 
   capabilities = capabilities,
+
   on_attach = function(client, buffer)
+    print('On Attach Solargraph')
+
     local callback = function()
       local params = vim.lsp.util.make_text_document_params(buffer)
 
