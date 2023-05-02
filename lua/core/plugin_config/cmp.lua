@@ -21,10 +21,9 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({
-      -- documentation says this is important.
-      -- I don't know why.
+      -- This is some how important for copilot
       behavior = cmp.ConfirmBehavior.Replace,
-      select = false -- was true
+      select = false
     }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
