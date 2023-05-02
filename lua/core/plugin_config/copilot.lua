@@ -12,8 +12,16 @@ vim.g.copilot_tab_fallback = ""
 --
 --]]
 
+--[[
 require("copilot").setup({
   suggestion = { enabled = false },
   panel = { enabled = false },
 })
+--]]
+
+require('copilot').setup({
+  suggestion = {enabled = false},
+  panel = {enabled = false},
+})
+require('copilot_cmp').setup()
 

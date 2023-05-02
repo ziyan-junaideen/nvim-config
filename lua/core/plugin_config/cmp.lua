@@ -24,16 +24,17 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({
+      -- documentation says this is important.
+      -- I don't know why.
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false -- was true
+    }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ["<Tab>"] = cmp.mapping(function(fallback)
-      local copilot_keys = vim.fn['copilot#Accept']()
-
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      elseif copilot_keys ~= '' and type(copilot_keys) == 'string' then
-        vim.api.nvim_feedkeys(copilot_keys, 'i', true)
       else
         fallback()
       end
@@ -50,6 +51,7 @@ cmp.setup({
     end, {"i", "s"}),
   }),
   sources = cmp.config.sources({
+    { name = 'copilot' },
     { name = 'nvim_lsp' },
     -- { name = 'vsnip' }, -- For vsnip users.
     { name = 'luasnip' }, -- For luasnip users.

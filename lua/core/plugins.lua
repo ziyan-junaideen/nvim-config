@@ -41,7 +41,6 @@ require('packer').startup(function(use)
   }
 
   -- Git related plugins
-  use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
@@ -128,22 +127,10 @@ require('packer').startup(function(use)
     }
   }
 
-  use {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({})
-    end,
-  }
+  use { "zbirenbaum/copilot.lua" }
 
-  use {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function ()
-      require("copilot_cmp").setup()
-    end
-  }
+
+  use { "zbirenbaum/copilot-cmp" }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
