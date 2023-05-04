@@ -42,6 +42,8 @@ require('packer').startup(function(use)
     }
   }
 
+  use { 'mfussenegger/nvim-lint' }
+
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = {
