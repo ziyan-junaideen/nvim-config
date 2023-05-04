@@ -39,43 +39,17 @@ lspconfig.lua_ls.setup {
 lspconfig.tsserver.setup{}
 lspconfig.erlangls.setup{}
 
--- lspconfig.solargraph.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
-
-lspconfig.ruby_ls.setup { 
+lspconfig.solargraph.setup {
+  on_attach = on_attach,
   capabilities = capabilities,
-
-  on_attach = function(client, buffer)
-    print('On Attach Solargraph')
-
-    local callback = function()
-      local params = vim.lsp.util.make_text_document_params(buffer)
-
-      client.request(
-        'textDocument/diagnostic',
-        { textDocument = params },
-        function(err, result)
-          if err then return end
-
-          vim.lsp.diagnostic.on_publish_diagnostics(
-            nil,
-            vim.tbl_extend('keep', params, { diagnostics = result.items }),
-            { client_id = client.id }
-          )
-        end
-      )
-    end
-
-    callback() -- call on attach
-
-    vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePre', 'BufReadPost', 'InsertLeave', 'TextChanged' }, {
-      buffer = buffer,
-      callback = callback,
-    })
-
-    -- The default on attach
-    on_attach()
-  end,
+  cmd = { "solargraph", "stdio" },
+  filetypes = { "ruby" },
+  init_options = {
+    formatting = true
+  },
+  settings = {
+    solargraph = {
+      diagnostics = true
+    }
+  }
 }
