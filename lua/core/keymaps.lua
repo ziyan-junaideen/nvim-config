@@ -13,3 +13,5 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+vim.keymap.set('v', '<leader>y', '"+y', { silent = true, noremap = true })
+vim.keymap.set('v', '<leader>p', '"+p', { silent = true, noremap = true })
