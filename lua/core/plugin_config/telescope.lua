@@ -17,11 +17,27 @@ require('telescope').setup {
       case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
                                        -- the default case_mode is "smart_case"
     }
-  }
+  },
+  vimgrep_arguments = {
+		"grep",
+		"--extended-regexp",
+		"--color=never",
+		"--with-filename",
+		"--line-number",
+		"-b", -- grep doesn't support a `--column` option :(
+		"--ignore-case",
+		"--recursive",
+		"--no-messages",
+		"--exclude-dir=*cache*",
+		"--exclude-dir=*.git",
+		"--exclude=.*",
+		"--binary-files=without-match"
+	},
 }
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+pcall(require("telescope").load_extension("persisted"))
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
