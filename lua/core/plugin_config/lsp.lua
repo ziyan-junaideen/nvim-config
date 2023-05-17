@@ -37,14 +37,14 @@ lspconfig.lua_ls.setup {
   capabilities = capabilities,
 }
 
-lspconfig.tsserver.setup{}
+-- lspconfig.tsserver.setup{}
 lspconfig.erlangls.setup{}
 
 lspconfig.solargraph.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = { "solargraph", "stdio" },
-  filetypes = { "ruby" },
+  filetypes = { "ruby", "rake" },
   init_options = {
     formatting = true
   },

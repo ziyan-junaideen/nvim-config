@@ -65,3 +65,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
+
