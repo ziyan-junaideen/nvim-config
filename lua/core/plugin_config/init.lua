@@ -1,3 +1,4 @@
+require('core.plugin_config.onedark')
 require('core.plugin_config.treesitter')
 require('core.plugin_config.lua-line')
 require('core.plugin_config.nvim-tree')
