@@ -17,3 +17,6 @@ vim.keymap.set('v', '<leader>y', '"+y', { silent = true, noremap = true })
 vim.keymap.set('v', '<leader>p', '"+p', { silent = true, noremap = true })
 vim.keymap.set('v', '<leader>Y', '"*p', { silent = true, noremap = true })
 vim.keymap.set('v', '<leader>P', '"*p', { silent = true, noremap = true })
+
+vim.keymap.set('v', '<leader>]', ':cnext<CR>', { desc="cnext", silent = true, noremap = true })
+vim.keymap.set('v', '<leader>[', ':cprev<CR>', { desc="cprev", silent = true, noremap = true })
