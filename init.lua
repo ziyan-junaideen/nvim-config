@@ -1,5 +1,6 @@
 require('core.options')
 require('core.keymaps')
 require('core.diagnostics')
-require('core.plugins')
-require('core.plugin_config')
+require('core.lazy')
+-- require('core.plugins')
+-- require('core.plugin_config')

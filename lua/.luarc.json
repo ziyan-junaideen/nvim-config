@@ -42,6 +42,7 @@
         "/Users/ziyan/.config/nvim/lua",
         "${3rd}/luv/library",
         "/Users/ziyan/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/298331a4",
-        "/Users/ziyan/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/68ed378b"
+        "/Users/ziyan/.local/share/nvim/mason/packages/lua-language-server/libexec/meta/68ed378b",
+        "${3rd}/luassert/library"
     ]
 }

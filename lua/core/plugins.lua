@@ -9,7 +9,7 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
-  
+
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -112,10 +112,10 @@ require('packer').startup(function(use)
   use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
   use { 'tpope/vim-fugitive' }
 
-  use {'nvim-orgmode/orgmode', config = function()
-      require('orgmode').setup{}
-    end
-  }
+  -- use {'nvim-orgmode/orgmode', config = function()
+  --     require('orgmode').setup{}
+  --   end
+  -- }
 
   use {
     "folke/which-key.nvim",
@@ -172,8 +172,6 @@ require('packer').startup(function(use)
   }
 
   use { "zbirenbaum/copilot.lua" }
-
-
   use { "zbirenbaum/copilot-cmp" }
 
   use { "derektata/lorem.nvim" }
