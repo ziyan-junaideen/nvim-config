@@ -73,8 +73,8 @@ return {
       lsp.setup_nvim_cmp({
         sources = {
           { name = "path" },
-          { name = "nvim_lsp", keyword_length = 3 },
-          { name = "luasnip", keyword_length = 3 },
+          { name = "nvim_lsp", keyword_length = 1 }, -- Was 3
+          { name = "luasnip", keyword_length = 1 }, -- was 3
           {
             name = "buffer",
             sorting = {
