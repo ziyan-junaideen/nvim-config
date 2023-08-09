@@ -12,6 +12,7 @@ return {
     'onsails/lspkind.nvim',
     'nvim-lua/plenary.nvim',
     'petertriho/cmp-git',
+    'zbirenbaum/copilot-cmp',
 	},
   config = function()
     local cmp = require("cmp")
@@ -57,32 +58,33 @@ return {
           end
         end),
       }),
-      sources = cmp.config.sources({
-        { name = 'copilot' },
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-        { name = "luasnip" },
-      }, {
-        { name = "buffer" },
-        { name = "path" },
-      }),
+      -- sources = cmp.config.sources({}, {}),
+      -- sources = cmp.config.sources({
+      --   { name = 'copilot' },
+      --   { name = "nvim_lsp" },
+      --   { name = "nvim_lua" },
+      --   { name = "luasnip" },
+      -- }, {
+      --   { name = "buffer" },
+      --   { name = "path" },
+      -- }),
     })
 
-    cmp.setup.cmdline(":", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "path" },
-      }, {
-        { name = "cmdline" },
-      }),
-    })
+    -- cmp.setup.cmdline(":", {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = cmp.config.sources({
+    --     { name = "path" },
+    --   }, {
+    --     { name = "cmdline" },
+    --   }),
+    -- })
 
-    cmp.setup.filetype('gitcommit', {
-      sources = cmp.config.sources({
-        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-      }, {
-        { name = 'buffer' },
-      })
-    })
+    -- cmp.setup.filetype('gitcommit', {
+    --   sources = cmp.config.sources({
+    --     { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    --   }, {
+    --     { name = 'buffer' },
+    --   })
+    -- })
   end
 }
